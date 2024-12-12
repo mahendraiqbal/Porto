@@ -2,20 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --accent: #3b82f6;
+  }
+
+  body {
+    @apply bg-background text-text-primary;
+    font-family: 'Inter', sans-serif;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .section-padding {
+    @apply py-16 px-4 md:px-8 max-w-7xl mx-auto;
+  }
+  
+  .heading {
+    @apply text-3xl md:text-4xl font-bold mb-6;
+  }
+  
+  .subheading {
+    @apply text-xl text-text-secondary mb-4;
+  }
 }
