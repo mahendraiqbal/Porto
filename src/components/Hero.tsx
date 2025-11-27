@@ -74,12 +74,12 @@ const Hero: React.FC = () => {
               <p className="text-sm text-text-secondary">
                 Currently, I&apos;m a Software Engineer at{' '}
                 <a
-                  href="https://facebook.com"
+                  href="https://www.adira.co.id/"
                   target="_blank"
                   rel="noreferrer"
                   className="text-white underline decoration-dotted decoration-accent"
                 >
-                  Facebook
+                  Adira Finance
                 </a>
                 .
               </p>
