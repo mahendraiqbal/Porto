@@ -27,16 +27,16 @@ const Certificates: React.FC = () => {
   const { t } = useLanguage()
 
   return (
-    <section id="certificates" className="section-padding space-y-12">
-      <div className="space-y-3 text-center">
-        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">{t('certificates.label')}</p>
-        <h2 className="heading mb-4">{t('certificates.subtitle')}</h2>
-        <p className="mx-auto max-w-2xl text-base text-text-secondary">
+    <section id="certificates" className="section-padding space-y-8 sm:space-y-10 md:space-y-12">
+      <div className="space-y-2 sm:space-y-3 text-center">
+        <p className="text-xs sm:text-sm uppercase tracking-[0.3em] sm:tracking-[0.4em] text-text-secondary">{t('certificates.label')}</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{t('certificates.subtitle')}</h2>
+        <p className="mx-auto max-w-2xl text-sm sm:text-base text-text-secondary px-4">
           {t('certificates.description')}
         </p>
       </div>
 
-      <div className="grid gap-10 md:grid-cols-2">
+      <div className="grid gap-6 sm:gap-8 md:gap-10 md:grid-cols-2">
         {certificates.map((certificate) => (
           <motion.div
             key={certificate.title}
@@ -44,10 +44,10 @@ const Certificates: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_25px_80px_rgba(4,0,19,0.8)]"
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 md:p-8 shadow-[0_25px_80px_rgba(4,0,19,0.8)]"
           >
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="relative h-48 w-full overflow-hidden rounded-xl bg-black/20">
+            <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-black/20 p-3 sm:p-4">
+              <div className="relative h-40 sm:h-44 md:h-48 w-full overflow-hidden rounded-lg sm:rounded-xl bg-black/20">
                 <Image
                   src={certificate.image}
                   alt={certificate.title}
@@ -57,20 +57,20 @@ const Certificates: React.FC = () => {
                 />
               </div>
             </div>
-            <div className="mt-6 space-y-2">
-              <h3 className="text-2xl font-semibold text-white">{certificate.title}</h3>
-              <p className="text-sm text-text-secondary">
+            <div className="mt-4 sm:mt-6 space-y-2">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white">{certificate.title}</h3>
+              <p className="text-xs sm:text-sm text-text-secondary">
                 {certificate.issuer} • {certificate.date}
               </p>
               <a
                 href={certificate.credentialUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-accent"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white hover:text-accent"
               >
                 {t('certificates.verify')}
                 <svg
-                  className="h-4 w-4"
+                  className="h-3 w-3 sm:h-4 sm:w-4"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"

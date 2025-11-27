@@ -137,13 +137,13 @@ const About: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid gap-10 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_20px_60px_rgba(4,0,19,0.7)] md:grid-cols-2"
+          className="grid gap-6 sm:gap-8 md:gap-10 rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 md:p-8 shadow-[0_20px_60px_rgba(4,0,19,0.7)] md:grid-cols-2"
         >
-          <div className="space-y-6">
-            <p className="text-lg text-text-secondary">
+          <div className="space-y-4 sm:space-y-6">
+            <p className="text-base sm:text-lg text-text-secondary">
               {t('about.description2')}
             </p>
-            <p className="text-lg text-text-secondary">
+            <p className="text-base sm:text-lg text-text-secondary">
               {t('about.description3')}
             </p>
             <a
@@ -163,14 +163,14 @@ const About: React.FC = () => {
               </svg>
             </a>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {quickFacts.map((fact) => (
               <div
                 key={fact.text}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left text-text-secondary"
+                className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 text-left text-text-secondary"
               >
-                <span className="text-2xl">{fact.icon}</span>
-                <p className="mt-3 text-base">{fact.text}</p>
+                <span className="text-xl sm:text-2xl">{fact.icon}</span>
+                <p className="mt-2 sm:mt-3 text-sm sm:text-base">{fact.text}</p>
               </div>
             ))}
           </div>
@@ -193,7 +193,7 @@ const About: React.FC = () => {
           {experiences.map((experience) => (
             <div
               key={`${experience.company}-${experience.role}`}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_15px_50px_rgba(4,0,19,0.6)]"
+              className="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-6 shadow-[0_15px_50px_rgba(4,0,19,0.6)]"
             >
               <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <div>
@@ -232,7 +232,7 @@ const About: React.FC = () => {
           {education.map((item) => (
             <div
               key={item.school}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 text-text-secondary shadow-[0_10px_40px_rgba(4,0,19,0.6)]"
+              className="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-6 text-text-secondary shadow-[0_10px_40px_rgba(4,0,19,0.6)]"
             >
               <p className="text-sm uppercase tracking-[0.4em]">{item.school}</p>
               <h4 className="mt-2 text-lg font-semibold text-white">{item.credential}</h4>

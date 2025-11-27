@@ -83,16 +83,16 @@ const Projects: React.FC = () => {
   const { t } = useLanguage()
 
   return (
-    <section id="projects" className="section-padding space-y-14">
-      <div className="space-y-3 text-center">
-        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">{t('projects.title')}</p>
-        <h2 className="heading mb-4">{t('projects.subtitle')}</h2>
-        <p className="mx-auto max-w-2xl text-base text-text-secondary">
+    <section id="projects" className="section-padding space-y-8 sm:space-y-12 md:space-y-14">
+      <div className="space-y-2 sm:space-y-3 text-center">
+        <p className="text-xs sm:text-sm uppercase tracking-[0.3em] sm:tracking-[0.4em] text-text-secondary">{t('projects.title')}</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{t('projects.subtitle')}</h2>
+        <p className="mx-auto max-w-2xl text-sm sm:text-base text-text-secondary px-4">
           {t('projects.description')}
         </p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <motion.div
             key={project.title}
@@ -100,9 +100,9 @@ const Projects: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="glow-card overflow-hidden p-6"
+            className="glow-card overflow-hidden p-4 sm:p-5 md:p-6"
           >
-            <div className="relative h-40 w-full overflow-hidden rounded-2xl border border-white/5 bg-black/20">
+            <div className="relative h-32 sm:h-36 md:h-40 w-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-black/20">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -111,12 +111,12 @@ const Projects: React.FC = () => {
                 className="object-cover"
               />
             </div>
-            <div className="mt-5 space-y-3">
-              <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-              <p className="text-sm text-text-secondary">{project.description}</p>
-              <div className="flex flex-wrap gap-2 text-xs text-text-secondary">
+            <div className="mt-4 sm:mt-5 space-y-2 sm:space-y-3">
+              <h3 className="text-lg sm:text-xl font-semibold text-white">{project.title}</h3>
+              <p className="text-xs sm:text-sm text-text-secondary">{project.description}</p>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 text-xs text-text-secondary">
                 {project.technologies.map((tech) => (
-                  <span key={tech} className="pill border-white/5 bg-white/10 px-3 py-1">
+                  <span key={tech} className="pill border-white/5 bg-white/10 px-2 sm:px-3 py-0.5 sm:py-1">
                     {tech}
                   </span>
                 ))}
@@ -125,11 +125,11 @@ const Projects: React.FC = () => {
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-accent"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white hover:text-accent"
               >
                 {t('projects.viewRepo')}
                 <svg
-                  className="h-4 w-4"
+                  className="h-3 w-3 sm:h-4 sm:w-4"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
