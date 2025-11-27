@@ -1,108 +1,71 @@
 'use client'
+
 import { motion } from 'framer-motion'
-import { FormEvent } from 'react'
+
+const socials = [
+  { label: 'Instagram', href: 'https://instagram.com/mahendra_iqbal24' },
+]
 
 const Contact: React.FC = () => {
-  const formVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  }
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    
-    // Get form data
-    const formData = new FormData(e.currentTarget)
-    const name = formData.get('name')
-    const email = formData.get('email')
-    const subject = formData.get('subject')
-    const message = formData.get('message')
-    
-    // Construct WhatsApp message
-    const whatsappMessage = `*Name:* ${name}%0A*Email:* ${email}%0A*Subject:* ${subject}%0A*Message:* ${message}`
-    
-    // Replace this with your phone number (include country code without +)
-    const phoneNumber = '081215806730'
-    
-    // Open WhatsApp in new tab
-    window.open(`https://wa.me/${phoneNumber}?text=${whatsappMessage}`, '_blank')
-  }
-
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding space-y-10">
+      <div className="divider-line" />
       <motion.div
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        variants={formVariants}
-        className="max-w-2xl mx-auto"
+        transition={{ duration: 0.6 }}
+        className="space-y-4 text-center md:text-left"
       >
-        <h2 className="heading text-center">Get in Touch</h2>
-        <div className="bg-white p-8 rounded-xl shadow-lg">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-gray-50"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-gray-50"
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-text-secondary mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-gray-50"
-                placeholder="How can I help you?"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={4}
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-gray-50"
-                placeholder="Your message here..."
-                required
-              />
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              className="w-full bg-accent text-white py-3 rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              Send Message
-            </motion.button>
-          </form>
-        </div>
+        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">Contact</p>
+        <h2 className="text-3xl font-semibold text-white">Let&apos;s build joy together.</h2>
+        <p className="text-base text-text-secondary">
+          I&apos;m currently looking to join a cross-functional team that values improving
+          people&apos;s lives through accessible design. Have a project in mind? Let&apos;s connect via
+          email or WhatsApp.
+        </p>
       </motion.div>
+
+      <div className="grid gap-6 text-center text-sm text-text-secondary md:grid-cols-3 md:text-left">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <p className="text-xs uppercase tracking-[0.4em]">Email</p>
+          <a
+            href="mailto:mahendraiqbal42@gmail.com"
+            className="mt-2 block text-white transition hover:text-accent"
+          >
+            mahendraiqbal42@gmail.com
+          </a>
+        </div>
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <p className="text-xs uppercase tracking-[0.4em]">Contact Person</p>
+          <a
+            href="https://wa.me/6281215806730"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 block text-white transition hover:text-accent"
+          >
+            0812 1580 6730
+          </a>
+        </div>
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <p className="text-xs uppercase tracking-[0.4em]">Social</p>
+          <div className="mt-2 flex justify-center gap-4 md:justify-start">
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-white transition hover:text-accent"
+              >
+                {social.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
 
-export default Contact 
+export default Contact

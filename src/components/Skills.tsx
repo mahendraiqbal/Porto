@@ -1,92 +1,52 @@
 'use client'
+
 import { motion } from 'framer-motion'
 
-interface Skill {
-  name: string;
-  icon: string;
-}
-
-interface SkillCategories {
-  [key: string]: Skill[];
-}
+const skills = [
+  { label: 'Figma', glyph: '🎨' },
+  { label: 'Laravel', glyph: '🐘' },
+  { label: 'Next.js', glyph: '▲' },
+  { label: 'React Native', glyph: '📱' },
+  { label: 'Node.js', glyph: '🟢' },
+  { label: 'TypeScript', glyph: 'TS' },
+  { label: 'Flutter', glyph: '💠' },
+  { label: 'Docker', glyph: '🐳' },
+  { label: 'Java', glyph: '☕' },
+  { label: 'Linux', glyph: '🐧' },
+  { label: 'Windows', glyph: '🪟' },
+]
 
 const Skills: React.FC = () => {
-  const skills: SkillCategories = {
-    "Frontend": [
-      { name: "React", icon: "⚛️" },
-      { name: "Next.js", icon: "▲" },
-      { name: "Vue", icon: "🟢" },
-      { name: "Flutter", icon: "🟢" }
-    ],
-    "Backend": [
-      { name: "Node.js", icon: "🟢" },
-      { name: "Python", icon: "🐍" },
-      { name: "Laravel", icon: "🟢" },
-      { name: "SQL", icon: "📊" }
-    ],
-    "Tools & Others": [
-      { name: "Git", icon: "📦" },
-      { name: "Docker", icon: "🐳" },
-      { name: "Agile", icon: "🔄" }
-    ]
-  }
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  }
-
   return (
-    <section id="skills" className="section-padding bg-gray-50">
-      <motion.h2 
-        className="heading text-center"
-        initial={{ opacity: 0, y: 20 }}
+    <section id="skills" className="section-padding space-y-10">
+      <div className="space-y-3 text-center">
+        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">Toolbelt</p>
+        <h2 className="heading mb-4">Stacks I reach for daily.</h2>
+        <p className="mx-auto max-w-2xl text-base text-text-secondary">
+          Every project needs its own flavour of tools. These are the ones that help me animate
+          ideas quickly without compromising on craft.
+        </p>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="glow-card flex flex-wrap items-center justify-center gap-6 p-8"
       >
-        Skills & Technologies
-      </motion.h2>
-      <motion.div 
-        className="grid md:grid-cols-3 gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {Object.entries(skills).map(([category, skillList]) => (
-          <motion.div 
-            key={category}
-            variants={itemVariants}
-            className="bg-white p-6 rounded-xl shadow-lg"
+        {skills.map((skill) => (
+          <div
+            key={skill.label}
+            className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-center text-sm text-white"
           >
-            <h3 className="text-xl font-semibold mb-4 text-accent">{category}</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {skillList.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center gap-2 bg-gray-50 rounded-lg p-3"
-                >
-                  <span className="text-2xl">{skill.icon}</span>
-                  <span className="text-text-secondary">{skill.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+            <span className="text-2xl">{skill.glyph}</span>
+            <span className="text-text-secondary">{skill.label}</span>
+          </div>
         ))}
       </motion.div>
     </section>
   )
 }
 
-export default Skills 
+export default Skills
