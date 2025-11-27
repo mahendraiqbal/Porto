@@ -1,15 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { key: 'home', href: '#home' },
+  { key: 'experience', href: '#experience' },
+  { key: 'projects', href: '#projects' },
+  { key: 'contact', href: '#contact' },
 ]
 
 const Navbar: React.FC = () => {
+  const { language, setLanguage, t } = useLanguage()
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -10 }}
@@ -28,17 +31,41 @@ const Navbar: React.FC = () => {
             href={item.href}
             className="text-text-secondary transition-colors hover:text-white"
           >
-            {item.label}
+            {t(`nav.${item.key}`)}
           </a>
         ))}
       </div>
 
-      <a
-        href="mailto:mahendraiqbal001@gmail.com"
-        className="pill text-sm font-medium text-white"
-      >
-        Available for work
-      </a>
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-1">
+          <button
+            onClick={() => setLanguage('id')}
+            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+              language === 'id'
+                ? 'bg-accent text-white'
+                : 'text-text-secondary hover:text-white'
+            }`}
+          >
+            ID
+          </button>
+          <button
+            onClick={() => setLanguage('en')}
+            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+              language === 'en'
+                ? 'bg-accent text-white'
+                : 'text-text-secondary hover:text-white'
+            }`}
+          >
+            EN
+          </button>
+        </div>
+        <a
+          href="mailto:mahendraiqbal42@gmail.com"
+          className="pill text-sm font-medium text-white"
+        >
+          {t('nav.available')}
+        </a>
+      </div>
     </motion.nav>
   )
 }

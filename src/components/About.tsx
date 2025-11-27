@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface QuickFact {
   icon: string
@@ -23,13 +24,13 @@ interface Education {
   notes?: string
 }
 
-const quickFacts: QuickFact[] = [
-  { icon: '🎓', text: 'Associate Degree in Information Management' },
-  { icon: '💼', text: 'Currently at PT BANK CIMB Niaga' },
-  { icon: '📍', text: 'South Tangerang, Indonesia' },
-  { icon: '🌱', text: 'Always learning new technologies' },
-  { icon: '💡', text: 'Passionate about problem solving' },
-  { icon: '🤝', text: 'Open to collaboration' },
+const getQuickFacts = (t: (key: string) => string): QuickFact[] => [
+  { icon: '🎓', text: t('about.fact.degree') },
+  { icon: '💼', text: t('about.fact.work') },
+  { icon: '📍', text: t('about.fact.location') },
+  { icon: '🌱', text: t('about.fact.learning') },
+  { icon: '💡', text: t('about.fact.passion') },
+  { icon: '🤝', text: t('about.fact.collaboration') },
 ]
 
 const experiences: Experience[] = [
@@ -111,6 +112,9 @@ const education: Education[] = [
 ]
 
 const About: React.FC = () => {
+  const { t } = useLanguage()
+  const quickFacts = getQuickFacts(t)
+
   return (
     <section id="experience" className="section-padding space-y-12">
       <motion.div
@@ -120,12 +124,10 @@ const About: React.FC = () => {
         transition={{ duration: 0.7 }}
         className="space-y-4 text-center"
       >
-        <p className="text-sm uppercase tracking-[0.5em] text-text-secondary">About</p>
-        <h2 className="heading mb-4">A self-taught software engineer with a UI/UX obsession.</h2>
+        <p className="text-sm uppercase tracking-[0.5em] text-text-secondary">{t('about.label')}</p>
+        <h2 className="heading mb-4">{t('about.subtitle')}</h2>
         <p className="mx-auto max-w-2xl text-base text-text-secondary">
-          I&apos;m a passionate software engineer with expertise in building modern web applications.
-          With 2 years of industry experience, I&apos;ve contributed to projects ranging from
-          e-commerce platforms to enterprise solutions.
+          {t('about.description1')}
         </p>
       </motion.div>
 
@@ -139,19 +141,16 @@ const About: React.FC = () => {
         >
           <div className="space-y-6">
             <p className="text-lg text-text-secondary">
-              My technical journey began with a degree in Information Management, and since then I
-              have developed a strong foundation in full-stack development, cloud computing, and
-              software architecture.
+              {t('about.description2')}
             </p>
             <p className="text-lg text-text-secondary">
-              Outside of building products, I enjoy collaborating with teams that value craft,
-              accessibility, and measurable impact.
+              {t('about.description3')}
             </p>
             <a
               href="#contact"
               className="inline-flex items-center gap-3 text-sm font-semibold text-white hover:text-accent"
             >
-              Let&apos;s work together
+              {t('about.workTogether')}
               <svg
                 className="h-4 w-4"
                 viewBox="0 0 24 24"
@@ -186,7 +185,7 @@ const About: React.FC = () => {
         className="space-y-6"
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-semibold text-white">Work Experience</h3>
+          <h3 className="text-2xl font-semibold text-white">{t('about.experience')}</h3>
           <div className="h-px flex-1 bg-gradient-to-r from-white/40 to-transparent ml-6" />
         </div>
 
@@ -226,7 +225,7 @@ const About: React.FC = () => {
         className="space-y-6"
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-semibold text-white">Education</h3>
+          <h3 className="text-2xl font-semibold text-white">{t('about.education')}</h3>
           <div className="h-px flex-1 bg-gradient-to-r from-white/40 to-transparent ml-6" />
         </div>
         <div className="grid gap-6 md:grid-cols-2">

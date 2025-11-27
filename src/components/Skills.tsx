@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const skills = [
   { label: 'Figma', glyph: '🎨' },
@@ -17,14 +18,15 @@ const skills = [
 ]
 
 const Skills: React.FC = () => {
+  const { t } = useLanguage()
+
   return (
     <section id="skills" className="section-padding space-y-10">
       <div className="space-y-3 text-center">
-        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">Toolbelt</p>
-        <h2 className="heading mb-4">Stacks I reach for daily.</h2>
+        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">{t('skills.title')}</p>
+        <h2 className="heading mb-4">{t('skills.subtitle')}</h2>
         <p className="mx-auto max-w-2xl text-base text-text-secondary">
-          Every project needs its own flavour of tools. These are the ones that help me animate
-          ideas quickly without compromising on craft.
+          {t('skills.description')}
         </p>
       </div>
 

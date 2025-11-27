@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const certificates = [
   {
@@ -23,14 +24,15 @@ const certificates = [
 ]
 
 const Certificates: React.FC = () => {
+  const { t } = useLanguage()
+
   return (
     <section id="certificates" className="section-padding space-y-12">
       <div className="space-y-3 text-center">
-        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">Certificates</p>
-        <h2 className="heading mb-4">Learning never really stops.</h2>
+        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">{t('certificates.label')}</p>
+        <h2 className="heading mb-4">{t('certificates.subtitle')}</h2>
         <p className="mx-auto max-w-2xl text-base text-text-secondary">
-          Highlights from my continuous learning journey. Each certificate strengthened my
-          fundamentals and sharpened how I build products.
+          {t('certificates.description')}
         </p>
       </div>
 
@@ -66,7 +68,7 @@ const Certificates: React.FC = () => {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-accent"
               >
-                Verify credential
+                {t('certificates.verify')}
                 <svg
                   className="h-4 w-4"
                   viewBox="0 0 24 24"

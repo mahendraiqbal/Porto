@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface Project {
   title: string
@@ -79,14 +80,15 @@ const projects: Project[] = [
 ]
 
 const Projects: React.FC = () => {
+  const { t } = useLanguage()
+
   return (
     <section id="projects" className="section-padding space-y-14">
       <div className="space-y-3 text-center">
-        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">Portfolio</p>
-        <h2 className="heading mb-4">Selected builds & experiments.</h2>
+        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">{t('projects.title')}</p>
+        <h2 className="heading mb-4">{t('projects.subtitle')}</h2>
         <p className="mx-auto max-w-2xl text-base text-text-secondary">
-          From dashboards to mobile utilities, these are the projects where I blended engineering
-          discipline with playful interfaces.
+          {t('projects.description')}
         </p>
       </div>
 
@@ -125,7 +127,7 @@ const Projects: React.FC = () => {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-accent"
               >
-                View repository
+                {t('projects.viewRepo')}
                 <svg
                   className="h-4 w-4"
                   viewBox="0 0 24 24"

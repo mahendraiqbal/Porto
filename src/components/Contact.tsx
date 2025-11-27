@@ -1,12 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const socials = [
   { label: 'Instagram', href: 'https://instagram.com/mahendra_iqbal24' },
 ]
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage()
+
   return (
     <section id="contact" className="section-padding space-y-10">
       <div className="divider-line" />
@@ -17,18 +20,16 @@ const Contact: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="space-y-4 text-center md:text-left"
       >
-        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">Contact</p>
-        <h2 className="text-3xl font-semibold text-white">Let&apos;s build joy together.</h2>
+        <p className="text-sm uppercase tracking-[0.4em] text-text-secondary">{t('contact.label')}</p>
+        <h2 className="text-3xl font-semibold text-white">{t('contact.title')}</h2>
         <p className="text-base text-text-secondary">
-          I&apos;m currently looking to join a cross-functional team that values improving
-          people&apos;s lives through accessible design. Have a project in mind? Let&apos;s connect via
-          email or WhatsApp.
+          {t('contact.subtitle')}
         </p>
       </motion.div>
 
       <div className="grid gap-6 text-center text-sm text-text-secondary md:grid-cols-3 md:text-left">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <p className="text-xs uppercase tracking-[0.4em]">Email</p>
+          <p className="text-xs uppercase tracking-[0.4em]">{t('contact.email')}</p>
           <a
             href="mailto:mahendraiqbal42@gmail.com"
             className="mt-2 block text-white transition hover:text-accent"
@@ -37,7 +38,7 @@ const Contact: React.FC = () => {
           </a>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <p className="text-xs uppercase tracking-[0.4em]">Contact Person</p>
+          <p className="text-xs uppercase tracking-[0.4em]">{t('contact.phone')}</p>
           <a
             href="https://wa.me/6281215806730"
             target="_blank"
@@ -48,7 +49,7 @@ const Contact: React.FC = () => {
           </a>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <p className="text-xs uppercase tracking-[0.4em]">Social</p>
+          <p className="text-xs uppercase tracking-[0.4em]">{t('contact.social')}</p>
           <div className="mt-2 flex justify-center gap-4 md:justify-start">
             {socials.map((social) => (
               <a

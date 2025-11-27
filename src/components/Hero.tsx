@@ -3,14 +3,17 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Navbar from './Navbar'
-
-const heroStats = [
-  { label: 'Years crafting products', value: '03+' },
-  { label: 'Products shipped', value: '18' },
-  { label: 'Happy collaborators', value: '12' },
-]
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage()
+  
+  const heroStats = [
+    { label: t('hero.stats.years'), value: '03+' },
+    { label: t('hero.stats.projects'), value: '18' },
+    { label: t('hero.stats.clients'), value: '12' },
+  ]
+
   return (
     <section
       id="home"
@@ -32,7 +35,7 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="text-sm uppercase tracking-[0.4em] text-text-secondary"
             >
-              Hello! I am Muhammad Iqbal
+              {t('hero.greeting')}
             </motion.span>
 
             <motion.h1
@@ -41,14 +44,7 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.2, duration: 0.7 }}
               className="text-4xl leading-tight md:text-6xl"
             >
-              A software engineer who{' '}
-              <span className="text-white">judges a book</span>
-              <br />
-              by its{' '}
-              <span className="bg-gradient-to-r from-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent underline decoration-[#8b5cf6]">
-                cover
-              </span>
-              .
+              {t('hero.tagline1')}
             </motion.h1>
 
             <motion.p
@@ -57,9 +53,16 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.35, duration: 0.7 }}
               className="text-lg text-text-secondary md:text-xl"
             >
-              Because if the cover does not impress you, what else can? I craft delightful digital
-              experiences that sit at the intersection of solid software engineering and my love for
-              UI/UX details.
+              {t('hero.tagline2')}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.7 }}
+              className="text-lg text-text-secondary md:text-xl"
+            >
+              {t('hero.tagline3')}
             </motion.p>
 
             <motion.div
@@ -69,10 +72,10 @@ const Hero: React.FC = () => {
               className="space-y-4"
             >
               <p className="text-2xl font-medium text-white">
-                I&apos;m a Software Engineer<span className="text-accent">.|</span>
+                {t('hero.role')}<span className="text-accent">.|</span>
               </p>
               <p className="text-sm text-text-secondary">
-                Currently, I&apos;m a Software Engineer at{' '}
+                {t('hero.current')}{' '}
                 <a
                   href="https://www.adira.co.id/"
                   target="_blank"
@@ -95,13 +98,13 @@ const Hero: React.FC = () => {
                 href="#projects"
                 className="rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#ec4899] px-8 py-3 text-sm font-semibold text-white shadow-[0_15px_40px_rgba(139,92,246,0.4)] transition hover:translate-y-0.5"
               >
-                View Work
+                {t('hero.viewWork')}
               </a>
               <a
                 href="#contact"
                 className="rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition hover:border-white/50"
               >
-                Let&apos;s talk
+                {t('hero.letsTalk')}
               </a>
             </motion.div>
 
@@ -141,7 +144,7 @@ const Hero: React.FC = () => {
                 priority
               />
               <div className="absolute -top-6 right-10 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur">
-                Hello! 👋
+                {t('hero.hello')}
               </div>
             </div>
           </motion.div>
